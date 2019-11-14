@@ -1,8 +1,5 @@
 <h1 align="center">Welcome to kv 👋</h1>
 <p>
-  <a href="https://github.com/bketelsen/kv" target="_blank">
-    <img alt="Version" src="https://img.shields.io/npm/v/kv.svg">
-  </a>
   <a href="#" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
@@ -20,6 +17,7 @@
 * Website: http://www.brianketelsen.com
 * Twitter: [@bketelsen](https://twitter.com/bketelsen)
 * Github: [@bketelsen](https://github.com/bketelsen)
+* Youtube: [@bketelsen](https://www.youtube.com/user/bketelsen)
 
 ## Show your support
 
