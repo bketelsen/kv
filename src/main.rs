@@ -1,7 +1,6 @@
 // Add these into our namespace
 use serde_json::Value;
 use std::collections::HashMap;
-use std::io::Read;
 use std::str::FromStr;
 use structopt::StructOpt;
 
@@ -60,17 +59,12 @@ fn write_keys(map: HashMap<String, String>) -> std::io::Result<()> {
 }
 
 fn load_keys() -> std::io::Result<HashMap<String, String>> {
-    let mut file = match std::fs::File::open("kv.db") {
-        Ok(file) => file,
-        Err(err) if err.kind() == std::io::ErrorKind::NotFound => std::fs::File::create("kv.db")?,
+    let contents = match std::fs::read_to_string("kv.db") {
+        Ok(s) => s,
+        Err(e) if e.kind() == std::io::ErrorKind::NotFound => return Ok(HashMap::new()),
         Err(e) => return Err(e),
     };
 
-    let mut contents = String::new();
-    file.read_to_string(&mut contents)?;
-    if contents.is_empty() {
-        contents.push_str("{}");
-    }
     let json: Value = serde_json::from_str(&contents)?;
     match json {
         Value::Object(map) => {
